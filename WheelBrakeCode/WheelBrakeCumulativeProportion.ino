@@ -18,6 +18,9 @@ int brakeRelease2 = 40;
 int brakeStop = 20;
 int brakeStop2 = 20;
 int reward_time = 30000;
+int cumulative_time_1 = 0;
+int cumulative_time_2 = 0;
+
 
 void setup() {
   // initialize the sensor pin as an input:
@@ -40,18 +43,31 @@ void loop(){
 
   // check if the sensor beam is broken
   // if it is, the IRread is LOW:
-  if (IRread1 == LOW) {   
-    delay(reward_time)  
-    // Release the brake
-    brakeServo1.write(brakeRelease);
-    delay(2000); //wait for the animal to fall to the ramp
-    brakeServo1.write(brakeStop);  //stop the wheel
+  if (IRread1 == LOW) {
+    delay(100)
+    while (IRread1 == LOW){
+        cumulative_time_1 += 100
+        if (cumulative_time_1 >= reward_time){
+            brakeServo1.write(brakeRelease);
+            delay(2000); //wait for the animal to fall to the ramp
+            brakeServo1.write(brakeStop);  //stop the wheel
+        }
+        
+    }
+    
   } 
-  if (IRread2 == LOW) {   
-    delay(reward_time)    
-    // Release the brake
-    brakeServo2.write(brakeRelease2);
-    delay(2000); //wait for the animal to fall to the ramp
-    brakeServo2.write(brakeStop2);  //stop the wheel
+
+  if (IRread2 == LOW) {
+    delay(100)
+    while (IRread2 == LOW){
+        cumulative_time_2 += 100
+        if (cumulative_time_2 >= reward_time){
+            brakeServo2.write(brakeRelease);
+            delay(2000); //wait for the animal to fall to the ramp
+            brakeServo2.write(brakeStop);  //stop the wheel
+        }
+        
+    }
+    
   } 
 }
