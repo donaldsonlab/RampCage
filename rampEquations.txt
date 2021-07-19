@@ -1,0 +1,11 @@
+﻿"wallThickness"= .125in
+"bottomThickness"= .25
+"D14@Sketch1"="wallThickness"
+"D16@Sketch1"="bottomThickness"
+"D18@Sketch1"="wallThickness"
+"D23@Sketch1"="wallThickness"
+"D1@Boss-Extrude1"="wallThickness"
+"D3@Sketch2"="D2@Sketch2" / "D1@Sketch2"
+"chamberHeight"= 15
+"D2@Sketch1"="chamberHeight"
+"D6@Sketch6"="wallThickness"
